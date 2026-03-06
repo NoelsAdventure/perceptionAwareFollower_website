@@ -168,8 +168,36 @@
     </div>
   </div>
 </section>
+<!-- System Framework & Problem Formulation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">System Framework & Problem Formulation</h2>
+        <div class="content has-text-justified">
+          <p>
+            We define the 3D leader-follower formation (3D-LFF) state in an augmented spherical coordinate representation: \( \mathbf{x}_{ij} = [L_{ij}, \phi_{ij}, \xi_{ij}, \alpha_{ij}]^\top \).
+          </p>
+          <div class="has-text-centered" style="margin-top: 20px; margin-bottom: 20px;">
+            <img src="./static/images/diagram.png" alt="Leader-follower geometry and camera frustum" style="max-width: 70%;">
+          </div>
+          <p>
+            The perception safe set \( \mathcal{S}^q \) is defined by the camera frustum inequalities, ensuring the leader remains within horizontal (\( \Phi \)) and vertical (\( \Theta \)) FOV angles, as well as depth limits (\( x_{near}, x_{far} \)).
+          </p>
+          <p>
+            <strong>Problem Formulation:</strong> This captures a fundamental trade-off. The control objective is to design a control law for the follower such that:
+          </p>
+          <ul>
+            <li>The formation error \( \mathbf{e}^\mathbf{x}_{ij} \) exponentially converges to \( \mathbf{0} \) when safety constraints are inactive.</li>
+            <li>The leader remains strictly within the follower's camera frustum for all \( t \ge 0 \).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Methodology & Geometry -->
+<!-- Methodology & Architecture -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -177,13 +205,13 @@
         <h2 class="title is-3">Methodology</h2>
         <div class="content has-text-justified">
           <p>
-            We define the 3D leader-follower formation (3D-LFF) state in an augmented spherical coordinate representation: \( \mathbf{x}_{ij} = [L_{ij}, \phi_{ij}, \xi_{ij}, \alpha_{ij}]^\top \).
+            To resolve the conflicting objectives between tracking and visibility in real-time, we couple a nominal 3D-LFF controller with a CBF-QP safety filter. 
           </p>
-          <div class="has-text-centered">
-            <img src="./static/images/diagram.png" alt="Leader-follower geometry and camera frustum" style="max-width: 70%;">
+          <div class="has-text-centered" style="margin-top: 20px; margin-bottom: 20px;">
+            <img src="./static/images/architecture4.png" alt="Perception-Aware Safe LFF Control Architecture" style="max-width: 100%;">
           </div>
           <p>
-            The perception safe set \( \mathcal{S}^q \) is defined by the camera frustum inequalities, ensuring the leader remains within horizontal (\( \Phi \)) and vertical (\( \Theta \)) FOV angles, as well as depth limits (\( x_{near}, x_{far} \)).
+            The desired formation is tracked by the distributed nominal controller based on the 3D-LFF kinematics using state-feedback linearization to produce the nominal velocity command \( \mathbf{u}_i^{nom} \). To guarantee perception safety, this nominal command is passed through a CBF-QP safety filter. The filter solves a quadratic program to produce a minimally modified safe command \( \mathbf{u}_i^{safe} \), actively enforcing the frustum constraints only when visibility is at risk.
           </p>
         </div>
       </div>
