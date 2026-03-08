@@ -311,5 +311,19 @@
   </div>
 </footer>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize all div with class .carousel
+      const carousels = bulmaCarousel.attach('#gazebo-carousel', {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        infinite: true,
+        autoplay: false,
+        pagination: false, // You can set this to true if you want dots at the bottom
+      });
+    });
+  </script>
+</body>
 </body>
 </html>
