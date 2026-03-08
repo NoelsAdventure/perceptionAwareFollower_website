@@ -249,21 +249,33 @@
   </div>
 </section>
 
-<!-- Quantitative Results -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
+<script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Quantitative Results</h2>
     <div class="columns is-centered">
+      
       <div class="column is-half">
         <h3 class="title is-4">Gazebo States</h3>
-        <img src="./static/images/crazysim_conflicting.png" alt="Gazebo Results Analysis">
-        <p class="is-size-7">Comparison of 3D-LFF states: The CBF-equipped follower (blue) maintains states within safe bounds compared to the unconstrained (NoCBF) baseline.</p>
+        <div class="slider-container">
+          <img-comparison-slider>
+            <img slot="first" src="./static/images/crazysim_conflicting.png" alt="Baseline NoCBF" />
+            <img slot="second" src="./static/images/crazysim_abrupt.png" alt="CBF Equipped" />
+          </img-comparison-slider>
+        </div>
+        <p class="is-size-7 mt-2">
+          <strong>Slide to compare:</strong> The CBF-equipped follower (blue) maintains states within safe bounds compared to the unconstrained (NoCBF) baseline.
+        </p>
       </div>
+
       <div class="column is-half">
         <h3 class="title is-4">Hardware States</h3>
         <img src="./static/images/exp_state.png" alt="Hardware Results Analysis">
-        <p class="is-size-7">Hardware validation: The CBF-QP safety filter modifies velocity commands only when visibility is at risk, ensuring forward invariance of the safe set.</p>
+        <p class="is-size-7">Hardware validation: The CBF-QP safety filter modifies velocity commands only when visibility is at risk.</p>
       </div>
+      
     </div>
   </div>
 </section>
