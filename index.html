@@ -279,7 +279,7 @@
     <div class="columns is-centered">
       
       <div class="column is-half">
-        <h3 class="title is-4">Gazebo States</h3>
+        <h3 class="title is-4">Gazebo Simulation</h3>
         
         <!-- Add a wrapper to contain the width -->
         <div class="carousel-container">
@@ -295,18 +295,33 @@
           </div>
         </div>
 
-        <p class="is-size-7 mt-4">
-          <strong>Comparison:</strong> The CBF-equipped follower (blue) maintains states within safe bounds compared to the unconstrained (NoCBF) baseline.
-        </p>
       </div>
 
+     
       <div class="column is-half">
-        <h3 class="title is-4">Hardware States</h3>
-        <img src="./static/images/exp_state.png" alt="Hardware Results Analysis">
-        <p class="is-size-7">Hardware validation: The CBF-QP safety filter modifies velocity commands only when visibility is at risk.</p>
+        <h3 class="title is-4">Hardware Experiment</h3>
+        
+        <!-- Add a wrapper to contain the width -->
+        <div class="carousel-container">
+          <div id="gazebo-carousel" class="carousel">
+            <div class="item">
+              <img src="./static/images/exp_state.png" alt="Baseline NoCBF" />
+              <p class="has-text-centered is-size-7">Conflicting Formation Objective States</p>
+            </div>
+            <div class="item">
+              <img src="./static/images/exp_control.png" alt="CBF Equipped" />
+              <p class="has-text-centered is-size-7">Conflicting Formation Objective Control</p>
+            </div>
+          </div>
+        </div>
+
       </div>
       
     </div>
+    
+    <p class="is-size-7 mt-4">
+      <strong>Comparison:</strong> The CBF-equipped follower (blue) maintains states within safe bounds compared to the unconstrained (NoCBF) baseline.
+    </p>
   </div>
 </section>
 
