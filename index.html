@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+    /* Prevents the carousel from blowing up the layout */
+    .carousel-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    
+    #gazebo-carousel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Moves the arrows so they don't overlap your text too much */
+    .carousel-navigation-prev, .carousel-navigation-next {
+      opacity: 0.7;
+    }
+  </style>
+
   <meta charset="utf-8">
   <meta name="description"
         content="Perception-Aware Safe Control for 3D Leader-Follower UAV Formation via CBF.">
